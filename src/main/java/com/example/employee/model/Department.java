@@ -4,16 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigInteger;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "department")
 public class Department {
     @Id
-    @GeneratedValue
-    private BigInteger id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(name = "name", unique = true, length = 45, nullable = false)
     private String name;
