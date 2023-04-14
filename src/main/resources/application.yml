@@ -23,3 +23,7 @@ logging:
     name: ./logs/springboot-practice.log
   level:
     root: info
+
+app:
+  jwt-secret: top-secret-change-me
+  jwt-expiration-ms: 50000
