@@ -15,6 +15,15 @@ $ ./mvnw spring-boot:run
 - set JDBC URL as `jdbc:h2:file:~/Downloads/morivy/research/employee/data/employee`
 - username as `sa`
 - password is 
+- 
+### How to run Docker
+
+```bash
+# Note that Dockerfile will be made as an image with spring.profiles.active = mysql 
+# to pickup application-mysql.yml configurations
+
+$ docker-compose run
+```
 
 ### How to login
 
@@ -37,7 +46,7 @@ curl --location 'http://localhost:8080/api/v1/employee/detail?id=1' \
 
 - add JWT security - done
 - add Swagger
-- add Dockerfile
+- add Dockerfile - done
 - add Unit testing
-- add MySQL connection
+- add MySQL connection - done
 - add update and delete operations

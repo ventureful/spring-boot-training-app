@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: mysql
   application:
     name: springboot-practice
   datasource:
@@ -7,13 +9,11 @@ spring:
     password:
     driverClassName: org.h2.Driver
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
     hibernate:
-      ddl-auto: none # !!IMPORTANT!! - set to `create` only if recreate tables, this will delete all data
+      ddl-auto: create # !!IMPORTANT!! - set to `create` only if recreate tables, this will delete all data
     show-sql: true
   h2:
     console:
