@@ -18,6 +18,8 @@ public class ResponseData {
     private Boolean success;
     private Integer code;
     private String message;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
