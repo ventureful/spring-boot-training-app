@@ -26,19 +26,15 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JwtAuthenticationExceptionHandling jwtAuthenticationExceptionHandling) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers(new AntPathRequestMatcher(H2_PATH)).permitAll()
+                .requestMatchers("/api/v1/auth/**").permitAll()
                 .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        http.cors().disable();
-
-        // to exempt /h2-console from security
+        http.cors().and().csrf().disable();
         http.headers().frameOptions().disable();
-        http.csrf(csrf -> csrf
-                .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher(H2_PATH)));
 
         http.exceptionHandling().authenticationEntryPoint(jwtAuthenticationExceptionHandling);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
